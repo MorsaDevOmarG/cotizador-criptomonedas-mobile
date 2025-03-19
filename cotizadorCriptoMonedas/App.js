@@ -8,7 +8,8 @@ import {
   Text,
   useColorScheme,
   View,
-  Image
+  Image,
+  ActivityIndicator
 } from 'react-native';
 import axios from 'axios';
 import Header from './components/Header';
@@ -20,6 +21,7 @@ const App = () => {
   const [criptomoneda, guardarCriptoMoneda] = useState('');
   const [consultarAPI, guardarConsultarAPI] = useState(false);
   const [resultado, guardarResultado] = useState({});
+  const [cargando, guardarCargando] = useState(false);
 
   useEffect(() => {
     const cotizarCriptomoneda = async () => {
@@ -33,9 +35,16 @@ const App = () => {
         const resultado = await axios.get(url);
         console.log(resultado.data.DISPLAY[criptomoneda][moneda]);
 
-        guardarResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
+        guardarCargando(true);
 
-        guardarConsultarAPI(false);
+        // Ocultar SPINNER y mostrar resultado
+        setTimeout(() => {
+          guardarResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
+
+          guardarConsultarAPI(false);
+
+          guardarCargando(false);
+        }, 3000);
       }
     };
 
@@ -43,6 +52,11 @@ const App = () => {
 
     console.log('ConsultarAPI ha cambiado...');
   }, [consultarAPI]);
+
+  // Mostrar el SPINNER o el resultado
+  const componente = cargando 
+                      ? <ActivityIndicator size="large" color="#5E49E2" /> 
+                      : <Cotizacion resultado={resultado} />
 
   return (
     <ScrollView>
@@ -62,10 +76,12 @@ const App = () => {
           guardarConsultarAPI={guardarConsultarAPI}
         />
       </View>
-
-      <Cotizacion 
-        resultado={resultado}
-      />
+      
+      <View style={ {marginTop: 40} }>
+        {
+          componente
+        }
+      </View>
     </ScrollView>
   );
 };
