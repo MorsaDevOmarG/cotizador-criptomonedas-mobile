@@ -45,7 +45,7 @@ const App = () => {
   }, [consultarAPI]);
 
   return (
-    <>
+    <ScrollView>
       <Header />
 
       <Image 
@@ -61,12 +61,12 @@ const App = () => {
           guardarCriptoMoneda={guardarCriptoMoneda}
           guardarConsultarAPI={guardarConsultarAPI}
         />
-
-        <Cotizacion 
-          resultado={resultado}
-        />
       </View>
-    </>
+
+      <Cotizacion 
+        resultado={resultado}
+      />
+    </ScrollView>
   );
 };
 
