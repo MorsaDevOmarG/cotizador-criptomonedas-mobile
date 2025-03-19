@@ -9,7 +9,7 @@ import axios from 'axios';
 const Formulario = () => {
     const [moneda, guardarMoneda] = useState('');
     const [criptomoneda, guardarCriptoMoneda] = useState('');
-    const [criptomonedas, guardarCriptoMonedas] = useState('');
+    const [criptomonedas, guardarCriptoMonedas] = useState([]);
 
     useEffect( () => {
         const consultarAPI =  async () => {
@@ -23,10 +23,17 @@ const Formulario = () => {
         consultarAPI();
     }, []);
 
+    // Almacen las selección del Usuario
     const obtenerMoneda = moneda => {
         console.log('obtener moneda', moneda);
 
         guardarMoneda(moneda);
+    };
+
+    const obtenerCriptoMoneda = cripto => {
+        console.log('obtener criptomoneda', cripto);
+
+        guardarCriptoMoneda(cripto);
     };
 
     return (
@@ -34,17 +41,31 @@ const Formulario = () => {
             <Text style={styles.label}>Moneda</Text>
 
             <Picker
-            selectedValue={moneda}
+                selectedValue={moneda}
                 onValueChange={ moneda => obtenerMoneda(moneda) }
+                itemStyle={ { height: 120 } }
             >
-                <Picker.Item label="- Seleccione -" value="USD" />
+                <Picker.Item label="- Seleccione -" value="" />
                 <Picker.Item label="Dolar de Estados Unidos"  value="USD" />
                 <Picker.Item label="Peso Mexicano"  value="MXN" />
-                <Picker.Item label="Euro"  value="" />
+                <Picker.Item label="Euro"  value="EUR" />
                 <Picker.Item label="Libra Esterlina"  value="GBP" />
             </Picker>
 
             <Text style={styles.label}>Criptomoneda</Text>
+
+            <Picker
+                selectedValue={criptomoneda}
+                onValueChange={ cripto => obtenerCriptoMoneda(cripto) }
+                itemStyle={ { height: 120 } }
+            >
+                <Picker.Item label="- Seleccione -" value="" />
+                {
+                    criptomonedas.map( cripto => (
+                        <Picker.Item key={cripto.CoinInfo.Id} label={cripto.CoinInfo.FullName} value={cripto.CoinInfo.Name} />
+                    ))
+                }
+            </Picker>
         </View>
     )
 };
