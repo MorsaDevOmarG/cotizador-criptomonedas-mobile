@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   SafeAreaView,
@@ -17,6 +17,9 @@ import Header from './components/Header';
 import Formulario from './components/Formulario';
 
 const App = () => {
+  const [moneda, guardarMoneda] = useState('');
+  const [criptomoneda, guardarCriptoMoneda] = useState('');
+  const [consultarAPI, guardarConsultarAPI] = useState(false);
 
   return (
     <>
@@ -28,7 +31,13 @@ const App = () => {
       />
 
       <View style={styles.contenido}>
-        <Formulario />
+        <Formulario 
+          moneda={moneda}
+          criptomoneda={criptomoneda}
+          guardarMoneda={guardarMoneda}
+          guardarCriptoMoneda={guardarCriptoMoneda}
+          guardarConsultarAPI={guardarConsultarAPI}
+        />
       </View>
     </>
   );
