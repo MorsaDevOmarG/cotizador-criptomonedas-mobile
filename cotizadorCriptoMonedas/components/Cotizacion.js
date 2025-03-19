@@ -11,15 +11,47 @@ const Cotizacion = (
     }
 
     return (
-        <View>
-            <Text>{resultado.PRICE}</Text>
+        <View style={styles.resultado}>
+            <Text style={styles.texto}>
+                <Text style={styles.span}>{resultado.PRICE}</Text>
+            </Text>
+
+            <Text style={styles.texto}>Precio más alto del día: {''}
+                <Text style={styles.span}>{resultado.HIGHDAY}</Text>
+            </Text>
+
+            <Text style={styles.texto}>Precio más bajo del día: {''}
+                <Text style={styles.span}>{resultado.LOWDAY}</Text>
+            </Text>
+
+            <Text style={styles.texto}> Variación últimas 24 hrs: {''}
+                <Text style={styles.span}>{resultado.CHANGEPCT24HOUR}%</Text>
+            </Text>
+
+            <Text style={styles.texto}>Última Actualización: {''}
+                <Text style={styles.span}>{resultado.LASTUPDATE}</Text>
+            </Text>
         </View>
     )
 };
 
 const styles = StyleSheet.create(
     {
+        resultado: {
 
+        },
+
+        texto: {
+
+        },
+
+        precio: {
+
+        },
+
+        span: {
+
+        }
     }
 );
 
