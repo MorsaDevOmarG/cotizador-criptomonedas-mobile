@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <SafeAreaView >
-
+      <Text>Prueba</Text>
     </SafeAreaView>
   );
 };
