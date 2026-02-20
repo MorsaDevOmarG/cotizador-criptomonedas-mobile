@@ -12,19 +12,17 @@
     - **react-native.config.js**
   - Con la siguiente configuración:
     - ```
-      module.exports = {
-        project: {
-          ios: {},
-          android: {},
-        },
-        assets: ['./assets/fonts/'],
-      };
+        module.exports = {
+          project: {
+            ios: {},
+            android: {},
+          },
+          assets: ['./assets/fonts/'],
+        };
       ```
-    ```
-
-    ```
   - Debemos ejecutar el siguiente comando:
     - **_npx react-native link_**
+    - **_npx react-native-asset_**
   - Después debemos reiniciar el servidor, es decir; detener la _app_ y volver a correrla.
 
 ### Notas

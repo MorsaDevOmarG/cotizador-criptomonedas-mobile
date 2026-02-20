@@ -9,6 +9,13 @@ const styles = StyleSheet.create({
   encabezado: {
     paddingTop: Platform.OS === 'ios' ? 50 : 10,
     fontFamily: 'Lato-Black',
+    backgroundColor: '#5E49E2',
+    color: '#FFF',
+    textAlign: 'center',
+    fontSize: 20,
+    paddingBottom: 10,
+    marginBottom: 30,
+    textTransform: 'uppercase',
   },
 });
 
