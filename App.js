@@ -4,10 +4,10 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 import Header from './components/Header';
+import Formulario from './components/Formulario';
 
 const App = () => {
   return (
@@ -18,6 +18,10 @@ const App = () => {
         source={require('./assets/img/cryptomonedas.png')}
         style={styles.imagen}
       />
+
+      <View style={styles.contenido}>
+        <Formulario />
+      </View>
     </>
   );
 };
@@ -26,6 +30,10 @@ const styles = StyleSheet.create({
   imagen: {
     width: '100%',
     height: 150,
+    marginHorizontal: '2.5%',
+  },
+
+  contenido: {
     marginHorizontal: '2.5%',
   },
 });
