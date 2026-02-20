@@ -24,5 +24,9 @@
     - **_npx react-native link_**
     - **_npx react-native-asset_**
   - Después debemos reiniciar el servidor, es decir; detener la _app_ y volver a correrla.
+- Picker
+  - **_npm install @react-native-community/picker --save_**
+  - Si marca error esa instalación, ejecutamos:
+    - **_npm install @react-native-picker/picker --save_**
 
 ### Notas
