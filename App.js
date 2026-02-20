@@ -6,11 +6,12 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Header from './components/Header';
 
 const App = () => {
   return (
     <>
-      <Text>Hola mundo</Text>
+      <Header />
     </>
   );
 };

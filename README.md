@@ -6,3 +6,6 @@
 ## Herramientas y/o Tecnologías
 
 - React
+- Google Fonts
+  - Añadiendo un tipo de Letra, dentro de la página de _Google Fonts_ la descargamos y ya la podemos agregar a nuestro proyecto.
+-
