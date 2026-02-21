@@ -28,6 +28,8 @@ const App = () => {
         const resultado = await axios.get(url);
         // console.log(resultado.data.DISPLAY[criptoMoneda][moneda]);
         guardarResultado(resultado.data.DISPLAY[criptoMoneda][moneda]);
+
+        guardarConsultarAPI(false);
       }
     };
 
