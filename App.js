@@ -1,6 +1,7 @@
 import {
   Image,
   SafeAreaView,
+  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -38,24 +39,26 @@ const App = () => {
 
   return (
     <>
-      <Header />
+      <ScrollView>
+        <Header />
 
-      <Image
-        source={require('./assets/img/cryptomonedas.png')}
-        style={styles.imagen}
-      />
-
-      <View style={styles.contenido}>
-        <Formulario
-          moneda={moneda}
-          criptoMoneda={criptoMoneda}
-          guardarMoneda={guardarMoneda}
-          guardarCriptoMoneda={guardarCriptoMoneda}
-          guardarConsultarAPI={guardarConsultarAPI}
+        <Image
+          source={require('./assets/img/cryptomonedas.png')}
+          style={styles.imagen}
         />
 
+        <View style={styles.contenido}>
+          <Formulario
+            moneda={moneda}
+            criptoMoneda={criptoMoneda}
+            guardarMoneda={guardarMoneda}
+            guardarCriptoMoneda={guardarCriptoMoneda}
+            guardarConsultarAPI={guardarConsultarAPI}
+          />
+        </View>
+
         <Cotizacion resultado={resultado} />
-      </View>
+      </ScrollView>
     </>
   );
 };
