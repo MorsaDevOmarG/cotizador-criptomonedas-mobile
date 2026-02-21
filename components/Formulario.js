@@ -8,11 +8,6 @@ const Formulario = () => {
   const [criptoMoneda, guardarCriptoMoneda] = useState('');
   const [criptoMonedas, guardarCriptoMonedas] = useState('');
 
-  const obtenerMoneda = moneda => {
-    console.log(moneda);
-    guardarMoneda(moneda);
-  };
-
   useEffect(() => {
     const consultarAPI = async () => {
       const url =
@@ -25,6 +20,17 @@ const Formulario = () => {
     consultarAPI();
   }, []);
 
+  // almacena las selecciones del usuario
+  const obtenerMoneda = moneda => {
+    // console.log(moneda);
+    guardarMoneda(moneda);
+  };
+
+  const obtenerCriptoMoneda = cripto => {
+    // console.log(cripto);
+    guardarCriptoMoneda(cripto);
+  };
+
   return (
     <View>
       <Text style={styles.label}>Moneda</Text>
@@ -32,6 +38,7 @@ const Formulario = () => {
       <Picker
         selectedValue={moneda}
         onValueChange={itemValue => obtenerMoneda(itemValue)}
+        itemStyle={{ height: 120 }}
       >
         <Picker.Item label="- Seleccione -" value="" />
         <Picker.Item label="Dolar de Estados Unidos" value="USD" />
@@ -41,6 +48,20 @@ const Formulario = () => {
       </Picker>
 
       <Text style={styles.label}>Criptomoneda</Text>
+
+      <Picker
+        selectedValue={criptoMoneda}
+        onValueChange={itemValue => obtenerCriptoMoneda(itemValue)}
+      >
+        <Picker.Item label="- Seleccione -" value="" />
+        {criptoMonedas.map(cripto => (
+          <Picker.Item
+            key={cripto.CoinInfo.Id}
+            label={cripto.CoinInfo.FullName}
+            value={cripto.CoinInfo.Name}
+          />
+        ))}
+      </Picker>
     </View>
   );
 };
