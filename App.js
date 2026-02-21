@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Image,
   SafeAreaView,
   ScrollView,
@@ -18,6 +19,7 @@ const App = () => {
   const [criptoMoneda, guardarCriptoMoneda] = useState('');
   const [consultarAPI, guardarConsultarAPI] = useState(false);
   const [resultado, guardarResultado] = useState({});
+  const [cargando, guardarCargando] = useState(false);
 
   useEffect(() => {
     // console.log('Consultar API ha cambiado...');
@@ -28,14 +30,26 @@ const App = () => {
         // console.log(url);
         const resultado = await axios.get(url);
         // console.log(resultado.data.DISPLAY[criptoMoneda][moneda]);
-        guardarResultado(resultado.data.DISPLAY[criptoMoneda][moneda]);
 
-        guardarConsultarAPI(false);
+        guardarCargando(true);
+
+        // Ocultar el spinner y mostrar el resultado
+        setTimeout(() => {
+          guardarResultado(resultado.data.DISPLAY[criptoMoneda][moneda]);
+          guardarConsultarAPI(false);
+          guardarCargando(false);
+        }, 3000);
       }
     };
 
     cotizarCriptoMoneda();
   }, [consultarAPI]);
+
+  const componente = cargando ? (
+    <ActivityIndicator size="large" color="#5E49E2" />
+  ) : (
+    <Cotizacion resultado={resultado} />
+  );
 
   return (
     <>
@@ -57,7 +71,7 @@ const App = () => {
           />
         </View>
 
-        <Cotizacion resultado={resultado} />
+        <View style={{ marginTop: 40 }}>{componente}</View>
       </ScrollView>
     </>
   );
