@@ -28,5 +28,13 @@
   - **_npm install @react-native-community/picker --save_**
   - Si marca error esa instalación, ejecutamos:
     - **_npm install @react-native-picker/picker --save_**
+- API
+  - _https://developers.coindesk.com/documentation/legacy/Price/SingleSymbolPriceEndpoint_
+  - Dentro de la página nos vamos al apartado de:
+  - **TopLists**
+    - **Toplist by Market Cap Full Data**
+  - El consumo de la _API_ lo haremos con la librería de _AXIOS_
+    - **_npm i --save axios_**
+  -
 
 ### Notas
