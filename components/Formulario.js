@@ -1,12 +1,12 @@
 import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 const Formulario = () => {
   const [moneda, guardarMoneda] = useState('');
   const [criptoMoneda, guardarCriptoMoneda] = useState('');
-  const [criptoMonedas, guardarCriptoMonedas] = useState('');
+  const [criptoMonedas, guardarCriptoMonedas] = useState([]);
 
   useEffect(() => {
     const consultarAPI = async () => {
@@ -29,6 +29,10 @@ const Formulario = () => {
   const obtenerCriptoMoneda = cripto => {
     // console.log(cripto);
     guardarCriptoMoneda(cripto);
+  };
+
+  const cotizarPrecio = () => {
+    console.log('Cotizando...');
   };
 
   return (
@@ -62,6 +66,13 @@ const Formulario = () => {
           />
         ))}
       </Picker>
+
+      <TouchableHighlight
+        style={styles.btnCotizar}
+        onPress={() => cotizarPrecio()}
+      >
+        <Text style={styles.btnTextoCotizar}>Cotizar</Text>
+      </TouchableHighlight>
     </View>
   );
 };
@@ -72,6 +83,19 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontSize: 22,
     marginVertical: 20,
+  },
+  btnCotizar: {
+    backgroundColor: '#5E49E2',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  btnTextoCotizar: {
+    color: '#FFF',
+    fontSize: 18,
+    fontFamily: 'Lato-Black',
+    textAlign: 'center',
+    textTransform: 'uppercase',
   },
 });
 
